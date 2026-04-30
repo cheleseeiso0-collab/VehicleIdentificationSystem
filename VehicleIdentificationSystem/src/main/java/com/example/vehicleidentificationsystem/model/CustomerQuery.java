@@ -5,7 +5,7 @@ import javafx.beans.property.*;
 public class CustomerQuery extends BaseModel {
     private final IntegerProperty queryId      = new SimpleIntegerProperty();
     private final IntegerProperty customerId   = new SimpleIntegerProperty();
-    private final StringProperty  customerName = new SimpleStringProperty();   // NEW
+    private final StringProperty  customerName = new SimpleStringProperty();   
     private final IntegerProperty vehicleId    = new SimpleIntegerProperty();
     private final StringProperty  queryDate    = new SimpleStringProperty();
     private final StringProperty  queryText    = new SimpleStringProperty();
