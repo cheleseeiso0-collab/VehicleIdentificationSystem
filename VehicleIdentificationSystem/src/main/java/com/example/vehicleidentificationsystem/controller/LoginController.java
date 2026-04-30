@@ -51,7 +51,7 @@ public class LoginController {
                 Parent root = loader.load();
                 stage.setScene(new Scene(root, 1200, 720));
                 stage.setTitle("Vehicle Identification System – " + current.getFullName());
-                stage.setMaximized(true);   // ← dashboard opens full‑screen
+                stage.setMaximized(true);   
                 stage.setResizable(true);
             } else {
                 statusLabel.setText("Invalid credentials.");
