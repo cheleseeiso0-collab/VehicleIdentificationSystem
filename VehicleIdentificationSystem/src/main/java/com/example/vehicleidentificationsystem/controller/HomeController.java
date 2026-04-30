@@ -67,7 +67,7 @@ public class HomeController {
     private void loadActivityData() {
         List<String> raw = fetchRealActivities();
         if (raw.isEmpty()) {
-            raw = buildActivityItems();   // fallback demo data
+            raw = buildActivityItems();   
         }
         activityItems = FXCollections.observableArrayList();
         for (int i = 0; i < raw.size(); i++) {
