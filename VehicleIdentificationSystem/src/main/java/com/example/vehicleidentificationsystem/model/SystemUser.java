@@ -6,7 +6,7 @@ public class SystemUser extends BaseModel {
     private final IntegerProperty userId   = new SimpleIntegerProperty();
     private final StringProperty  username = new SimpleStringProperty();
     private final StringProperty  password = new SimpleStringProperty();
-    private final StringProperty  role     = new SimpleStringProperty(); // ADMIN, POLICE, etc.
+    private final StringProperty  role     = new SimpleStringProperty(); 
     private final StringProperty  fullName = new SimpleStringProperty();
     private final BooleanProperty active   = new SimpleBooleanProperty(true);
 
