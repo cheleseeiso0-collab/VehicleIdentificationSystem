@@ -1,8 +1,3 @@
--- =============================================================
---  Vehicle Identification System — PostgreSQL Schema
---  Run: psql -d vis_db -f sql/schema.sql
--- =============================================================
-
 CREATE TABLE IF NOT EXISTS customer (
     customer_id SERIAL PRIMARY KEY,
     name        VARCHAR(120) NOT NULL,
@@ -164,7 +159,6 @@ END;
 $$;
 
 -- ── SEED ADMIN ────────────────────────────────────────────────
--- password: admin1234  (SHA-256)
 INSERT INTO app_user(username, password_hash, role)
 VALUES ('admin', 'ac9689e2272427085e35b9d3e3e8bed88cb3434828b43b86fc0596cad4c6e270', 'ADMIN')
 ON CONFLICT (username) DO UPDATE
