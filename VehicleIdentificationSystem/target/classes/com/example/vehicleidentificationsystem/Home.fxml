@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="homeRoot" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.vehicleidentificationsystem.controller.HomeController"
+            stylesheets="@css/styles.css" styleClass="root-bg">
+
+    <center>
+        <VBox spacing="20" styleClass="dashboard-content">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Dashboard Overview Cards -->
+            <HBox spacing="15" alignment="CENTER">
+                <padding>
+                    <Insets left="10" right="10"/>
+                </padding>
+                <VBox styleClass="stat-card" alignment="CENTER" prefWidth="220">
+                    <Label fx:id="totalVehiclesLabel" text="0" styleClass="stat-number"/>
+                    <Label text="Total Vehicles" styleClass="stat-label"/>
+                </VBox>
+
+                <VBox styleClass="stat-card" alignment="CENTER" prefWidth="220">
+                    <Label fx:id="registeredOwnersLabel" text="0" styleClass="stat-number"/>
+                    <Label text="Available Customers" styleClass="stat-label"/>
+                </VBox>
+
+                <VBox styleClass="stat-card" alignment="CENTER" prefWidth="220">
+                    <Label fx:id="unpaidViolationsLabel" text="0" styleClass="stat-number"/>
+                    <Label text="Unpaid Violations" styleClass="stat-label"/>
+                </VBox>
+
+                <VBox styleClass="stat-card" alignment="CENTER" prefWidth="220">
+                    <Label fx:id="activeModulesLabel" text="5" styleClass="stat-number"/>
+                    <Label text="Active Modules" styleClass="stat-label"/>
+                </VBox>
+            </HBox>
+
+            <!-- System Health Section -->
+            <VBox spacing="10">
+                <Label text="System Progress" styleClass="section-title"/>
+                <GridPane hgap="20" vgap="12" styleClass="health-grid">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="25"/>
+                    </columnConstraints>
+
+                    <Label text="Vehicle Records" GridPane.columnIndex="0" styleClass="health-label"/>
+                    <ProgressBar fx:id="vehicleRecordsProgress" progress="0" prefWidth="180" GridPane.columnIndex="1" styleClass="health-progress"/>
+                    <Label fx:id="vehicleRecordsValue" text="0%" GridPane.columnIndex="2" styleClass="health-value"/>
+
+                    <Label text="Customer Records" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="health-label"/>
+                    <ProgressBar fx:id="customerRecordsProgress" progress="0" prefWidth="180" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="health-progress"/>
+                    <Label fx:id="customerRecordsValue" text="0%" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="health-value"/>
+                </GridPane>
+            </VBox>
+
+            <!-- Pagination – two pages: Recent Activity & Registration Index -->
+            <Pagination fx:id="pagination"/>
+        </VBox>
+    </center>
+</BorderPane>

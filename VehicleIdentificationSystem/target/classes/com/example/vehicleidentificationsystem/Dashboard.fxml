@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="mainPane"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.vehicleidentificationsystem.controller.DashboardController"
+            stylesheets="@css/styles.css" styleClass="root-bg">
+    <top>
+        <VBox>
+            <MenuBar styleClass="menu-bar">
+                <Menu text="File">
+                    <MenuItem text="Logout" onAction="#handleLogout"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Exit" onAction="#handleExit"/>
+                </Menu>
+                <Menu text="Modules">
+                    <MenuItem text="Workshop" onAction="#loadWorkshop"/>
+                    <MenuItem text="Customer" onAction="#loadCustomer"/>
+                    <MenuItem text="Police" onAction="#loadPolice"/>
+                    <MenuItem text="Insurance" onAction="#loadInsurance"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Admin" onAction="#loadAdmin"/>
+                </Menu>
+            </MenuBar>
+
+            <HBox fx:id="navBar" styleClass="nav-bar" spacing="10" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="0" right="0" bottom="0" left="16"/>
+                </padding>
+                <Button fx:id="homeNavBtn"       text="Dashboard"   styleClass="nav-button" onAction="#loadHome"/>
+                <Button fx:id="workshopNavBtn"   text="Workshop"    styleClass="nav-button" onAction="#loadWorkshop"/>
+                <Button fx:id="customerNavBtn"   text="Customer"    styleClass="nav-button" onAction="#loadCustomer"/>
+                <Button fx:id="policeNavBtn"     text="Police"      styleClass="nav-button" onAction="#loadPolice"/>
+                <Button fx:id="insuranceNavBtn"  text="Insurance"   styleClass="nav-button" onAction="#loadInsurance"/>
+                <Button fx:id="buyVehicleBtn"    text="Buy Vehicle" styleClass="nav-button" onAction="#loadBuyVehicle"/>
+                <Button fx:id="adminNavBtn"      text="Admin"       styleClass="nav-button" onAction="#loadAdmin"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox alignment="CENTER_RIGHT" spacing="2">
+                    <padding>
+                        <Insets top="0" right="12" bottom="0" left="0"/>
+                    </padding>
+                    <Label fx:id="userNameLabel" styleClass="user-badge"/>
+                    <Label fx:id="userRoleLabel" styleClass="user-role"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <StackPane fx:id="contentPane" styleClass="content-pane"/>
+    </center>
+</BorderPane>

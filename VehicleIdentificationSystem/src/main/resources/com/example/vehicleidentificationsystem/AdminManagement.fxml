@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.vehicleidentificationsystem.controller.AdminController">
+    <VBox stylesheets="@css/styles.css" styleClass="content-pane" spacing="15">
+
+        <Text text="Admin Module – User Accounts" styleClass="page-title"/>
+
+        <TableView fx:id="userTable" styleClass="table-view" prefHeight="200">
+            <columns>
+                <TableColumn text="ID" prefWidth="50"/>
+                <TableColumn text="Username" prefWidth="120"/>
+                <TableColumn text="Full Name" prefWidth="180"/>
+                <TableColumn text="Role" prefWidth="100"/>
+                <TableColumn text="Active" prefWidth="80"/>
+            </columns>
+        </TableView>
+
+        <TitledPane text="Create New User" expanded="false">
+            <GridPane hgap="10" vgap="8" styleClass="form-grid">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Username" styleClass="input-label"/>
+                    <TextField fx:id="newUsername" promptText="Username" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Password" styleClass="input-label"/>
+                    <PasswordField fx:id="newPassword" promptText="Password" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Full Name" styleClass="input-label"/>
+                    <TextField fx:id="newFullName" promptText="Full Name" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Role" styleClass="input-label"/>
+                    <ComboBox fx:id="newRoleBox" promptText="Select Role" styleClass="combo-box"/>
+                </VBox>
+                <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+                    <Button text="Create User" styleClass="primary-button" onAction="#handleCreateUser"/>
+                    <Button text="Edit Selected" styleClass="primary-button" onAction="#handleEditUser"/>
+                    <Button text="Toggle Active" styleClass="secondary-button" onAction="#handleToggleActive"/>
+                    <Button text="Delete User" styleClass="danger-button" onAction="#handleDeleteUser"/>
+                    <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancel"/>
+                </HBox>
+            </GridPane>
+        </TitledPane>
+    </VBox>
+</ScrollPane>

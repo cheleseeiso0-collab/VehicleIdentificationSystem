@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.vehicleidentificationsystem.controller.PoliceController">
+    <VBox stylesheets="@css/styles.css" styleClass="content-pane" spacing="15">
+
+        <Text text="Police Module" styleClass="page-title"/>
+
+        <Text text="Police Reports" styleClass="section-header"/>
+        <TableView fx:id="reportTable" styleClass="table-view" prefHeight="150">
+            <columns>
+                <TableColumn text="ID" prefWidth="50"/>
+                <TableColumn text="Vehicle ID" prefWidth="80"/>
+                <TableColumn text="Date" prefWidth="100"/>
+                <TableColumn text="Type" prefWidth="100"/>
+                <TableColumn text="Description" prefWidth="200"/>
+                <TableColumn text="Officer" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+        <TitledPane text="Manage Reports" expanded="false">
+            <GridPane hgap="10" vgap="8" styleClass="form-grid">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Vehicle ID" styleClass="input-label"/>
+                    <TextField fx:id="repVehicleId" promptText="Vehicle ID" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Date" styleClass="input-label"/>
+                    <TextField fx:id="repDate" promptText="YYYY-MM-DD" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Type" styleClass="input-label"/>
+                    <ComboBox fx:id="repTypeBox" promptText="Report Type" styleClass="combo-box"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Officer" styleClass="input-label"/>
+                    <TextField fx:id="repOfficer" promptText="Officer Name" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+                    <Label text="Description" styleClass="input-label"/>
+                    <TextField fx:id="repDesc" promptText="Description" styleClass="text-field"/>
+                </VBox>
+                <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                    <Button text="Add Report" styleClass="primary-button" onAction="#handleAddReport"/>
+                    <Button text="Update Selected" styleClass="primary-button" onAction="#handleUpdateReport"/>
+                    <Button text="Delete Selected" styleClass="danger-button" onAction="#handleDeleteReport"/>
+                    <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancelReport"/>
+                </HBox>
+            </GridPane>
+        </TitledPane>
+
+        <Separator/>
+        <Text text="Traffic Violations" styleClass="section-header"/>
+        <TableView fx:id="violationTable" styleClass="table-view" prefHeight="150">
+            <columns>
+                <TableColumn text="ID" prefWidth="50"/>
+                <TableColumn text="Vehicle ID" prefWidth="80"/>
+                <TableColumn text="Date" prefWidth="100"/>
+                <TableColumn text="Type" prefWidth="120"/>
+                <TableColumn text="Fine (M)" prefWidth="80"/>
+                <TableColumn text="Status" prefWidth="80"/>
+            </columns>
+        </TableView>
+
+        <TitledPane text="Manage Violations" expanded="false">
+            <GridPane hgap="10" vgap="8" styleClass="form-grid">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Vehicle ID" styleClass="input-label"/>
+                    <TextField fx:id="violVehicleId" promptText="Vehicle ID" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Date" styleClass="input-label"/>
+                    <TextField fx:id="violDate" promptText="YYYY-MM-DD" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Type" styleClass="input-label"/>
+                    <ComboBox fx:id="violTypeBox" promptText="Violation Type" styleClass="combo-box"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Fine (M)" styleClass="input-label"/>
+                    <TextField fx:id="violFine" promptText="Fine amount" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="Status" styleClass="input-label"/>
+                    <ComboBox fx:id="violStatusBox" promptText="Status" styleClass="combo-box"/>
+                </VBox>
+                <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                    <Button text="Add Violation" styleClass="primary-button" onAction="#handleAddViolation"/>
+                    <Button text="Update Selected" styleClass="primary-button" onAction="#handleUpdateViolation"/>
+                    <Button text="Delete Selected" styleClass="danger-button" onAction="#handleDeleteViolation"/>
+                    <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancelViolation"/>
+                </HBox>
+            </GridPane>
+        </TitledPane>
+    </VBox>
+</ScrollPane>

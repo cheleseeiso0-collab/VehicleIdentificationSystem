@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.vehicleidentificationsystem.controller.BuyerInquiryController">
+    <VBox stylesheets="@css/styles.css" styleClass="content-panel" spacing="15">
+
+        <Text text="Second-Hand Vehicle Inquiry" styleClass="page-title"/>
+        <Text text="Search for a vehicle and send a message to the owner" styleClass="page-subtitle"/>
+
+        <HBox spacing="8">
+            <TextField fx:id="searchField" promptText="Registration number or make" styleClass="text-field" HBox.hgrow="ALWAYS"/>
+            <Button text="Search" onAction="#handleSearch" styleClass="secondary-button"/>
+            <Button text="Show All" onAction="#handleShowAll" styleClass="secondary-button"/>
+        </HBox>
+
+        <TableView fx:id="vehicleTable" styleClass="table-view" prefHeight="250">
+            <columns>
+                <TableColumn text="ID" prefWidth="50"/>
+                <TableColumn text="Registration" prefWidth="130"/>
+                <TableColumn text="Make" prefWidth="100"/>
+                <TableColumn text="Model" prefWidth="100"/>
+                <TableColumn text="Year" prefWidth="70"/>
+                <TableColumn text="Owner" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+        <Label text="Selected Vehicle:" styleClass="input-label"/>
+        <Label fx:id="selectedVehicleLabel" style="-fx-text-fill: #E8EDF0; -fx-font-size: 14px;"/>
+
+        <TextArea fx:id="inquiryText" promptText="Write your message to the vehicle owner..." styleClass="text-field" prefRowCount="4" wrapText="true"/>
+
+        <HBox spacing="10">
+            <Button fx:id="sendInquiryBtn" text="Send Inquiry" styleClass="primary-button" onAction="#handleSendInquiry" maxWidth="200"/>
+            <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancel"/>
+        </HBox>
+
+        <Label fx:id="statusLabel" styleClass="error-label"/>
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.vehicleidentificationsystem.controller.InsuranceController">
+    <VBox stylesheets="@css/styles.css" styleClass="content-pane" spacing="15">
+
+        <Text text="Insurance Module" styleClass="page-title"/>
+
+        <TableView fx:id="policyTable" styleClass="table-view" prefHeight="180">
+            <columns>
+                <TableColumn text="ID" prefWidth="40"/>
+                <TableColumn text="Vehicle ID" prefWidth="80"/>
+                <TableColumn text="Provider" prefWidth="150"/>
+                <TableColumn text="Policy #" prefWidth="100"/>
+                <TableColumn text="Start" prefWidth="90"/>
+                <TableColumn text="Expiry" prefWidth="90"/>
+                <TableColumn text="Coverage" prefWidth="110"/>
+                <TableColumn text="Premium" prefWidth="80"/>
+            </columns>
+        </TableView>
+
+        <TitledPane text="Manage Policy" expanded="false">
+            <GridPane hgap="10" vgap="8" styleClass="form-grid">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Vehicle ID" styleClass="input-label"/>
+                    <TextField fx:id="vehIdField" promptText="Vehicle ID" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Provider" styleClass="input-label"/>
+                    <TextField fx:id="providerField" promptText="Provider" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Policy number" styleClass="input-label"/>
+                    <TextField fx:id="policyNumField" promptText="Policy Number" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Start Date" styleClass="input-label"/>
+                    <TextField fx:id="startDateField" promptText="YYYY-MM-DD" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="Expiry Date" styleClass="input-label"/>
+                    <TextField fx:id="expiryDateField" promptText="YYYY-MM-DD" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <Label text="Coverage" styleClass="input-label"/>
+                    <TextField fx:id="coverageField" promptText="Coverage Type" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <Label text="Premium" styleClass="input-label"/>
+                    <TextField fx:id="premiumField" promptText="Premium (M)" styleClass="text-field"/>
+                </VBox>
+                <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2">
+                    <Button text="Add Policy" styleClass="primary-button" onAction="#handleAddPolicy"/>
+                    <Button text="Update Selected" styleClass="primary-button" onAction="#handleUpdatePolicy"/>
+                    <Button text="Delete Selected" styleClass="danger-button" onAction="#handleDeletePolicy"/>
+                    <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancelPolicy"/>
+                </HBox>
+            </GridPane>
+        </TitledPane>
+    </VBox>
+</ScrollPane>

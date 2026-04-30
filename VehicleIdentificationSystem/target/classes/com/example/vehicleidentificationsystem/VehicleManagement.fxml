@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.vehicleidentificationsystem.controller.VehicleController">
+    <VBox stylesheets="@css/styles.css" styleClass="content-pane" spacing="15">
+
+        <Text text="Workshop Module" styleClass="page-title"/>
+        <Text text="Vehicle registry &amp; service history" styleClass="page-subtitle"/>
+
+        <HBox spacing="8">
+            <TextField fx:id="searchField" promptText="Search by registration…" styleClass="text-field" HBox.hgrow="ALWAYS"/>
+            <Button text="Search" styleClass="secondary-button" onAction="#handleSearch"/>
+            <Button text="Refresh" styleClass="secondary-button" onAction="#handleRefresh"/>
+        </HBox>
+
+        <TableView fx:id="vehicleTable" styleClass="table-view" prefHeight="200" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn text="ID" prefWidth="50"/>
+                <TableColumn text="Registration" prefWidth="130"/>
+                <TableColumn text="Make" prefWidth="100"/>
+                <TableColumn text="Model" prefWidth="100"/>
+                <TableColumn text="Year" prefWidth="70"/>
+                <TableColumn text="Owner" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+        <!-- ========== ADD NEW VEHICLE ========== -->
+        <TitledPane text="Add New Vehicle" expanded="false">
+            <GridPane hgap="10" vgap="8" styleClass="form-grid">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Registration Number" styleClass="input-label"/>
+                    <TextField fx:id="regField" promptText="AA 001 LS" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Make" styleClass="input-label"/>
+                    <TextField fx:id="makeField" promptText="Toyota" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Model" styleClass="input-label"/>
+                    <TextField fx:id="modelField" promptText="Hilux" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Year" styleClass="input-label"/>
+                    <TextField fx:id="yearField" promptText="2022" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="Owner Name" styleClass="input-label"/>
+                    <ComboBox fx:id="ownerCombo" promptText="Select Owner" styleClass="combo-box"/>
+                </VBox>
+
+                <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                    <Button text="Add Vehicle" styleClass="primary-button" onAction="#handleAddVehicle"/>
+                    <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancelAddVehicle"/>
+                </HBox>
+            </GridPane>
+        </TitledPane>
+
+        <!-- ========== EDIT SELECTED VEHICLE ========== -->
+        <TitledPane text="Edit Selected Vehicle" expanded="false">
+            <GridPane hgap="10" vgap="8" styleClass="form-grid">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Registration Number" styleClass="input-label"/>
+                    <TextField fx:id="editRegField" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Make" styleClass="input-label"/>
+                    <TextField fx:id="editMakeField" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Model" styleClass="input-label"/>
+                    <TextField fx:id="editModelField" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Year" styleClass="input-label"/>
+                    <TextField fx:id="editYearField" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <Label text="Owner Name" styleClass="input-label"/>
+                    <ComboBox fx:id="editOwnerCombo" styleClass="combo-box"/>
+                </VBox>
+
+                <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                    <Button text="Update Vehicle" styleClass="primary-button" onAction="#handleUpdateVehicle"/>
+                    <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancelEditVehicle"/>
+                </HBox>
+            </GridPane>
+        </TitledPane>
+
+        <Button text="Delete Selected Vehicle" styleClass="danger-button" onAction="#handleDeleteVehicle"/>
+
+        <Separator/>
+        <Text text="Service Records" styleClass="section-header"/>
+
+        <TableView fx:id="serviceTable" styleClass="table-view" prefHeight="180">
+            <columns>
+                <TableColumn text="ID" prefWidth="50"/>
+                <TableColumn text="Vehicle ID" prefWidth="80"/>
+                <TableColumn text="Date" prefWidth="100"/>
+                <TableColumn text="Type" prefWidth="120"/>
+                <TableColumn text="Description" prefWidth="200"/>
+                <TableColumn text="Cost (M)" prefWidth="80"/>
+            </columns>
+        </TableView>
+
+        <!-- ========== ADD NEW SERVICE RECORD ========== -->
+        <TitledPane text="Add New Service Record" expanded="false">
+            <GridPane hgap="10" vgap="8" styleClass="form-grid">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Vehicle ID" styleClass="input-label"/>
+                    <TextField fx:id="sVehicleIdField" promptText="1" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Service Date" styleClass="input-label"/>
+                    <TextField fx:id="sDateField" promptText="YYYY-MM-DD" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Service Type" styleClass="input-label"/>
+                    <TextField fx:id="sTypeField" promptText="Oil Change" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Cost (Maloti)" styleClass="input-label"/>
+                    <TextField fx:id="sCostField" promptText="350.00" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+                    <Label text="Description" styleClass="input-label"/>
+                    <TextField fx:id="sDescField" promptText="Service description" styleClass="text-field"/>
+                </VBox>
+
+                <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                    <Button text="Add Service" styleClass="primary-button" onAction="#handleAddService"/>
+                    <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancelAddService"/>
+                </HBox>
+            </GridPane>
+        </TitledPane>
+
+        <!-- ========== EDIT SELECTED SERVICE RECORD ========== -->
+        <TitledPane text="Edit Selected Service Record" expanded="false">
+            <GridPane hgap="10" vgap="8" styleClass="form-grid">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label text="Vehicle ID" styleClass="input-label"/>
+                    <TextField fx:id="editServiceVehicleId" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label text="Service Date" styleClass="input-label"/>
+                    <TextField fx:id="editServiceDate" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label text="Service Type" styleClass="input-label"/>
+                    <TextField fx:id="editServiceType" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label text="Cost (Maloti)" styleClass="input-label"/>
+                    <TextField fx:id="editServiceCost" styleClass="text-field"/>
+                </VBox>
+                <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+                    <Label text="Description" styleClass="input-label"/>
+                    <TextField fx:id="editServiceDesc" styleClass="text-field"/>
+                </VBox>
+
+                <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                    <Button text="Update Service" styleClass="primary-button" onAction="#handleUpdateService"/>
+                    <Button text="Cancel" styleClass="secondary-button" onAction="#handleCancelEditService"/>
+                </HBox>
+            </GridPane>
+        </TitledPane>
+
+        <Button text="Delete Selected Service" styleClass="danger-button" onAction="#handleDeleteService"/>
+    </VBox>
+</ScrollPane>
