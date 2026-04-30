@@ -8,7 +8,7 @@ public class Violation extends BaseModel {
     private final StringProperty  violationDate = new SimpleStringProperty();
     private final StringProperty  violationType = new SimpleStringProperty();
     private final DoubleProperty  fineAmount    = new SimpleDoubleProperty();
-    private final StringProperty  status        = new SimpleStringProperty(); // Paid / Unpaid
+    private final StringProperty  status        = new SimpleStringProperty(); 
 
     public Violation() { super(); }
 
